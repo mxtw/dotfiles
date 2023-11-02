@@ -110,6 +110,46 @@ local config = {
                 )
             }),
         },
+        {
+            key = "s",
+            mods = "CTRL|SHIFT",
+            action = wezterm.action_callback(function(window, pane)
+                local success, stdout, stderr = wezterm.run_child_process({ "zoxide", "query", "--list" })
+
+                local dirs = {}
+
+                for line in stdout:gmatch("([^\n]*)\n?") do
+                    table.insert(dirs,
+                        { id = line, label = line })
+                end
+
+                window:perform_action(
+                    wezterm.action.InputSelector({
+                        action = wezterm.action_callback(function(inner_window, inner_pane, id, label)
+                            if not id and not label then
+                                return
+                            else
+                                local ws_name = label:match("[^/]*$")
+
+                                inner_window:perform_action(
+                                    wezterm.action.SwitchToWorkspace({
+                                        name = ws_name,
+                                        spawn = {
+                                            label = 'Workspace: ' .. ws_name,
+                                            cwd = id,
+                                        },
+                                    }), inner_pane
+                                )
+                            end
+                        end),
+                        choices = dirs,
+                        fuzzy = true,
+                        title = "Zoxide"
+                    }), pane
+                )
+            end
+            ),
+        },
     }
 }
 
