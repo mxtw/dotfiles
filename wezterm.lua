@@ -1,16 +1,8 @@
 local wezterm = require("wezterm")
 
-wezterm.on("update-right-status", function(window, pane)
-    -- display current workspace in tab bar
-    local ws = window:active_workspace()
-    window:set_right_status(wezterm.format {
-        { Foreground = { Color = "#1e1e2e" } },
-        { Background = { Color = "#b4befe" } },
-        { Text = " " .. ws .. " " },
-    })
-end)
+require("bar")
 
-config = {
+local config = {
     color_scheme = "Catppuccin Mocha",
     font = wezterm.font("Hack"),
     font_size = 17.0,
