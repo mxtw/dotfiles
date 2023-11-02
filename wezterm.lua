@@ -10,11 +10,11 @@ wezterm.on("update-right-status", function(window, pane)
     })
 end)
 
-return {
+config = {
     color_scheme = "Catppuccin Mocha",
     font = wezterm.font("Hack"),
     font_size = 17.0,
-    -- window_background_opacity = 0.95,
+    window_background_opacity = 0.92,
     adjust_window_size_when_changing_font_size = false,
     hide_tab_bar_if_only_one_tab = false,
     use_fancy_tab_bar = false,
@@ -104,3 +104,19 @@ return {
         },
     }
 }
+
+for i = 1, 8 do
+    -- ALT + number to activate that tab
+    table.insert(config.keys, {
+        key = tostring(i),
+        mods = 'ALT',
+        action = wezterm.action.ActivateTab(i - 1),
+    })
+    table.insert(config.keys, {
+        key = tostring(i),
+        mods = 'CTRL|ALT',
+        action = wezterm.action.MoveTab(i - 1),
+    })
+end
+
+return config
