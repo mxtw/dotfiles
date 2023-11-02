@@ -11,7 +11,7 @@ function kubernetes_context()
     return wezterm.format({
         { Foreground = { Color = "#1e1e2e" } },
         { Background = { Color = "#89b4f1" } },
-        { Text = " " .. stdout .. " " },
+        { Text = " ⎈ " .. stdout .. " " },
     })
 end
 
@@ -19,7 +19,7 @@ function workspace(window)
     return wezterm.format({
         { Foreground = { Color = "#1e1e2e" } },
         { Background = { Color = "#b4befe" } },
-        { Text = " " .. window:active_workspace() .. " " },
+        { Text = " 󰇄  " .. window:active_workspace() .. " " },
     })
 end
 
