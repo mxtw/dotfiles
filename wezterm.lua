@@ -1,8 +1,7 @@
 local wezterm = require("wezterm")
+local act = wezterm.action
 
 require("bar")
-
-local custom = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
 
 local config = {
     color_scheme = "Catppuccin Mocha",
@@ -34,58 +33,58 @@ local config = {
         {
             key = "Return",
             mods = "CTRL|SHIFT",
-            action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+            action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
         },
         {
             key = "Return",
             mods = "CTRL|SHIFT|ALT",
-            action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+            action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
         },
 
         -- navigating splits
         {
             key = "j",
             mods = "CTRL|SHIFT",
-            action = wezterm.action.ActivatePaneDirection("Prev")
+            action = act.ActivatePaneDirection("Prev")
         },
         {
             key = "k",
             mods = "CTRL|SHIFT",
-            action = wezterm.action.ActivatePaneDirection("Next")
+            action = act.ActivatePaneDirection("Next")
         },
 
         -- tabs (old habits)
         {
             key = "LeftArrow",
             mods = "SHIFT",
-            action = wezterm.action.ActivateTabRelative(-1)
+            action = act.ActivateTabRelative(-1)
         },
         {
             key = "RightArrow",
             mods = "SHIFT",
-            action = wezterm.action.ActivateTabRelative(1)
+            action = act.ActivateTabRelative(1)
         },
 
         -- resizing splits
         {
             key = "h",
             mods = "CTRL|SHIFT|ALT",
-            action = wezterm.action.AdjustPaneSize({ "Left", 5 })
+            action = act.AdjustPaneSize({ "Left", 5 })
         },
         {
             key = "l",
             mods = "CTRL|SHIFT|ALT",
-            action = wezterm.action.AdjustPaneSize({ "Right", 5 })
+            action = act.AdjustPaneSize({ "Right", 5 })
         },
         {
             key = "j",
             mods = "CTRL|SHIFT|ALT",
-            action = wezterm.action.AdjustPaneSize({ "Down", 5 })
+            action = act.AdjustPaneSize({ "Down", 5 })
         },
         {
             key = "k",
             mods = "CTRL|SHIFT|ALT",
-            action = wezterm.action.AdjustPaneSize({ "Up", 5 })
+            action = act.AdjustPaneSize({ "Up", 5 })
         },
 
         -- workspaces
@@ -93,13 +92,23 @@ local config = {
         {
             key = "m",
             mods = "CTRL|SHIFT",
-            action = wezterm.action.ShowLauncherArgs({ flags = 'FUZZY|WORKSPACES' }),
+            action = act.ShowLauncherArgs({ flags = 'FUZZY|WORKSPACES' }),
+        },
+        {
+            key = "Comma",
+            mods = "CTRL|SHIFT",
+            action = act.SwitchWorkspaceRelative(-1)
+        },
+        {
+            key = "Period",
+            mods = "CTRL|SHIFT",
+            action = act.SwitchWorkspaceRelative(1)
         },
         --- rename workspace
         {
             key = "m",
             mods = "CTRL|SHIFT|ALT",
-            action = wezterm.action.PromptInputLine({
+            action = act.PromptInputLine({
                 description = 'Enter new name for workspace ' .. wezterm.mux.get_active_workspace(),
                 action = wezterm.action_callback(
                     function(window, pane, line)
@@ -124,7 +133,7 @@ local config = {
                 end
 
                 window:perform_action(
-                    wezterm.action.InputSelector({
+                    act.InputSelector({
                         action = wezterm.action_callback(function(inner_window, inner_pane, id, label)
                             if not id and not label then
                                 return
@@ -132,7 +141,7 @@ local config = {
                                 local ws_name = label:match("[^/]*$")
 
                                 inner_window:perform_action(
-                                    wezterm.action.SwitchToWorkspace({
+                                    act.SwitchToWorkspace({
                                         name = ws_name,
                                         spawn = {
                                             label = 'Workspace: ' .. ws_name,
@@ -158,12 +167,12 @@ for i = 1, 8 do
     table.insert(config.keys, {
         key = tostring(i),
         mods = 'ALT',
-        action = wezterm.action.ActivateTab(i - 1),
+        action = act.ActivateTab(i - 1),
     })
     table.insert(config.keys, {
         key = tostring(i),
         mods = 'CTRL|ALT',
-        action = wezterm.action.MoveTab(i - 1),
+        action = act.MoveTab(i - 1),
     })
 end
 
