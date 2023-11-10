@@ -16,10 +16,21 @@ function kubernetes_context()
 end
 
 function workspace(window)
+    local aw = window:active_workspace()
+    local wl = wezterm.mux.get_workspace_names()
+
+    local res = ""
+
+    for idx, name in pairs(wl) do
+        if name == aw then
+            res = aw .. " [" .. idx .. "/" .. #(wl) .. "]"
+        end
+    end
+
     return wezterm.format({
         { Foreground = { Color = "#1e1e2e" } },
         { Background = { Color = "#b4befe" } },
-        { Text = " 󰇄  " .. window:active_workspace() .. " " },
+        { Text = " 󰇄  " .. res .. " " },
     })
 end
 
