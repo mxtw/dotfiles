@@ -1,0 +1,32 @@
+#!/bin/sh
+
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_STYLE_OVERRIDE=kvantum
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+# all needed for firefox hardware accel
+# export MOZ_DISABLE_RDD_SANDBOX=1
+# export MOZ_X11_EGL=1
+# export NVD_BACKEND=direct # can break but egl didnt work
+
+xrandr --output DP-2   --mode 1920x1200 --pos 0x0       --rate 59.95 # top left
+xrandr --output HDMI-1 --mode 1920x1080 --pos 1920x1200    --rate 60    # bottom right
+xrandr --output DP-1   --mode 1920x1080 --pos 0x1200 --rate 144   # bottom left
+xrandr --dpi 94 &
+# xrandr --output DisplayPort-1   --mode 1920x1200 --pos 0x0       --rate 59.95 # top left
+# xrandr --output HDMI-A-0 --mode 1920x1080 --pos 0x1200    --rate 60    # bottom left
+# xrandr --output DisplayPort-0   --mode 1920x1080 --pos 1920x1200 --rate 144   # bottom right
+
+xinput set-prop "BenQ ZOWIE BenQ ZOWIE Gaming Mouse" "libinput Accel Profile Enabled" 0, 1 # disable mouse accel
+xinput set-prop pointer:"Logitech MX Master 3" "libinput Accel Profile Enabled" 0, 1 # disable mouse accel
+xsetroot -cursor_name left_ptr &
+setxkbmap eu & # eurokey layout because its cool, might switch to colemak-dh later on
+kiti &
+redshift &
+picom &
+#obs --startreplaybuffer --minimize-to-tray &
+nextcloud &
+keepassxc &
+#easyeffects --gapplication-service &
+# /usr/lib/kdeconnectd &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & # gnome polkit daemon
