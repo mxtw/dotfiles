@@ -19,9 +19,9 @@ then
     redshift &
     picom &
 else
-    wlr-randr --output DP-2   --mode 1920x1200 --pos 0,0        # top left
-    wlr-randr --output DP-1 --mode 1920x1080 --pos 0,1200     # bottom left
-    wlr-randr --output HDMI-A-1   --mode 1920x1080 --pos 1920,1200  # bottom right
+    wlr-randr --output DP-2       --mode 1920x1200            --pos 0,0        # top left
+    wlr-randr --output DP-1       --mode 1920x1080@144.001007 --pos 0,1200     # bottom left
+    wlr-randr --output HDMI-A-1   --mode 1920x1080            --pos 1920,1200  # bottom right
 
     gsettings set org.gnome.desktop.interface gtk-theme 'Catppuccin-Mocha-Standard-Lavender-Dark'
     gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
