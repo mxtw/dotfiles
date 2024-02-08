@@ -227,16 +227,17 @@ screens = [
         top=bar.Bar(
             [
                 widget.GroupBox(
-                    highlight_method="block",
+                    highlight_method="line",
+                    highlight_color=[Colors.base,Colors.base],
                     use_mouse_wheel=False,
-                    active=Colors.base,
+                    active=Colors.lavender,
                     inactive=Colors.surface2,
                     this_current_screen_border=Colors.lavender,
                     this_screen_border=Colors.lavender,
-                    other_current_screen_border=Colors.lavender,
-                    other_screen_border=Colors.lavender,
+                    other_current_screen_border=Colors.teal,
+                    other_screen_border=Colors.teal,
                 ),
-                widget.WindowTabs(foreground=Colors.text),
+                widget.WindowTabs(foreground=Colors.lavender),
                 widget.CPU(background=Colors.teal),
                 widget.Memory(background=Colors.sky),
                 widget.PulseVolume(background=Colors.sapphire),
