@@ -1,0 +1,81 @@
+@import "mocha.css";
+
+* {
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    font-family: Hack Nerd Font;
+    font-weight: bold;
+    padding: 1;
+}
+
+.modules-center {
+    background: @base;
+    border-radius: 10px;
+    margin: 2px;
+    margin: 2px 2px 0px 2px;
+}
+
+.modules-left {
+    background: @base;
+    border-radius: 10px;
+    margin: 2px 2px 0px 2px;
+}
+
+.modules-right {
+    background: @base;
+    border-radius: 10px;
+    margin: 2px 2px 0px 2px;
+}
+
+tooltip {
+    background: @base;
+    color: @lavender;
+    border-radius: 10px;
+    padding: 4px;
+}
+
+#workspaces,
+#window,
+#pulseaudio,
+#cpu,
+#memory,
+#clock,
+#language,
+#tray {
+    background: @transparent;
+    padding: 0 4px;
+    margin: 0 2px;
+}
+
+#workspaces button {
+    color: @surface2;
+}
+#workspaces button.active {
+    color: @lavender;
+}
+
+#window {
+    color: @lavender;
+}
+
+#pulseaudio {
+    color: @sapphire;
+}
+
+#cpu {
+    color: @sky;
+}
+
+#memory {
+    color: @teal;
+}
+
+#clock {
+    color: @green;
+}
+
+#tray {
+    color: @base;
+}
+
