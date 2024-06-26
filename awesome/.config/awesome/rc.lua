@@ -55,6 +55,7 @@ end
 -- Themes define colours, icons, font and wallpapers.
 theme = "catppuccin"
 beautiful.init("~/.config/awesome/themes/" .. theme .. ".lua")
+beautiful.notification_icon_size = 50
 
 -- This is used later as the default terminal and editor to run.
 terminal                         = os.getenv("TERMCMD") or "wezterm"
