@@ -57,23 +57,23 @@ theme = "catppuccin"
 beautiful.init("~/.config/awesome/themes/" .. theme .. ".lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal             = os.getenv("TERMCMD") or "wezterm"
-browser              = os.getenv("BROWSER") or "firefox"
-editor               = os.getenv("EDITOR") or "nvim"
-mail                 = "thunderbird"
-emacsclient          = "emacsclient -c -a 'emacs --daemon'"
-editor_cmd           = terminal .. " -e " .. editor
-file_manager         = "thunar"
+terminal                         = os.getenv("TERMCMD") or "wezterm"
+browser                          = os.getenv("BROWSER") or "firefox"
+editor                           = os.getenv("EDITOR") or "nvim"
+mail                             = "thunderbird"
+emacsclient                      = "emacsclient -c -a 'emacs --daemon'"
+editor_cmd                       = terminal .. " -e " .. editor
+file_manager                     = "thunar"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
 -- If you do not like this or do not have such a key,
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
-modkey               = "Mod4"
+modkey                           = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
-awful.layout.layouts = {
+awful.layout.layouts             = {
     awful.layout.suit.tile,
     -- awful.layout.suit.spiral,
     awful.layout.suit.max,
@@ -96,7 +96,7 @@ awful.layout.layouts = {
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
-local myawesomemenu  = {
+local myawesomemenu              = {
     { "hotkeys",     function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
     { "manual",      terminal .. " -e man awesome" },
     { "edit config", editor_cmd .. " " .. awesome.conffile },
@@ -104,13 +104,13 @@ local myawesomemenu  = {
     { "quit",        function() awesome.quit() end },
 }
 
-local powermenu      = {
+local powermenu                  = {
     { "suspend",  "systemctl suspend" },
     { "poweroff", "poweroff" },
     { "reboot",   "reboot" },
 }
 
-local programs       = {
+local programs                   = {
     { "terminal", terminal },
     { "discord",  "discord" },
     { "spotify",  "spotify" },
@@ -119,10 +119,10 @@ local programs       = {
     { "files",    file_manager },
 }
 
-local menu_awesome   = { "awesome", myawesomemenu }
-local menu_power     = { "power", powermenu }
-local menu_programs  = { "programs", programs }
-local menu_games     = {
+local menu_awesome               = { "awesome", myawesomemenu }
+local menu_power                 = { "power", powermenu }
+local menu_programs              = { "programs", programs }
+local menu_games                 = {
     "games", {
     { "steam",    "steam" },
     { "runelite", "runelite" },
