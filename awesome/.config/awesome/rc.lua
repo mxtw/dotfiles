@@ -59,7 +59,7 @@ beautiful.notification_icon_size = 50
 
 -- This is used later as the default terminal and editor to run.
 terminal                         = os.getenv("TERMCMD") or "wezterm"
-browser                          = os.getenv("BROWSER") or "firefox"
+browser                          = os.getenv("BROWSER") or "firefox-bin"
 editor                           = os.getenv("EDITOR") or "nvim"
 mail                             = "thunderbird"
 emacsclient                      = "emacsclient -c -a 'emacs --daemon'"
@@ -106,9 +106,9 @@ local myawesomemenu              = {
 }
 
 local powermenu                  = {
-    { "suspend",  "systemctl suspend" },
-    { "poweroff", "poweroff" },
-    { "reboot",   "reboot" },
+    { "suspend",  "loginctl suspend" },
+    { "poweroff", "loginctl poweroff" },
+    { "reboot",   "loginctl reboot" },
 }
 
 local programs                   = {
