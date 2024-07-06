@@ -1,5 +1,7 @@
 #!/bin/sh
 
+gentoo-pipewire-launcher &
+
 xrandr --output DisplayPort-1   --mode 1920x1200 --pos 0x0       --rate 59.95 # top left
 xrandr --output HDMI-A-0 --mode 1920x1080 --pos 1920x1200    --rate 60    # bottom right
 xrandr --output DisplayPort-0   --mode 1920x1080 --pos 0x1200 --rate 144   # bottom left
