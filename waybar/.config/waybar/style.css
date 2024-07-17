@@ -3,39 +3,20 @@
 * {
     border: none;
     border-radius: 0;
-    background: transparent;
+    background: @base;
     font-family: Hack Nerd Font;
     font-weight: bold;
-    padding: 1;
-}
-
-.modules-center {
-    background: @base;
-    border-radius: 10px;
-    margin: 2px;
-    margin: 2px 2px 0px 2px;
-}
-
-.modules-left {
-    background: @base;
-    border-radius: 10px;
-    margin: 2px 2px 0px 2px;
-}
-
-.modules-right {
-    background: @base;
-    border-radius: 10px;
-    margin: 2px 2px 0px 2px;
+    margin: 0px;
+    padding: 0;
 }
 
 tooltip {
     background: @base;
     color: @lavender;
-    border-radius: 10px;
     padding: 4px;
 }
 
-#workspaces,
+#tags,
 #window,
 #pulseaudio,
 #cpu,
@@ -48,10 +29,16 @@ tooltip {
     margin: 0 2px;
 }
 
-#workspaces button {
-    color: @surface2;
+#tags button {
+    color: @surface0;
 }
-#workspaces button.active {
+#tags button.urgent {
+    color: @red;
+}
+#tags button.occupied {
+    color: @overlay0;
+}
+#tags button.focused {
     color: @lavender;
 }
 
