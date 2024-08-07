@@ -7,6 +7,22 @@ exec_once() {
     fi
 }
 
+spawn_yambar() {
+    killall yambar
+
+    monitors=$(wlr-randr | grep "^[^ ]" | awk '{ print$1 }')
+    total=$(wlr-randr | grep "^[^ ]" | awk '{ print$1 }' | wc -l)
+
+    for monitor in ${monitors}; do
+        riverctl focus-output ${monitor}
+        yambar &
+        sleep 0.2
+    done
+    if [ "$total" -gt "1" ]; then
+        riverctl focus-output HDMI-A-1
+    fi
+}
+
 exec_always() {
     killall $1; $@
 }
@@ -44,9 +60,9 @@ riverctl map normal Super Period focus-output next
 riverctl map normal Super Comma focus-output previous
 
 # Super+Shift+{Period,Comma} to send the focused view to the next/previous output
-riverctl map normal Super+Shift Period send-to-output next
-riverctl map normal Super+Shift Comma send-to-output previous
-riverctl map normal Super O send-to-output next
+riverctl map normal Super+Shift Period send-to-output -current-tags next
+riverctl map normal Super+Shift Comma send-to-output -current-tags previous
+riverctl map normal Super O spawn 'sh -c "riverctl send-to-output -current-tags next && riverctl focus-output next"'
 
 # Super+Return to bump the focused view to the top of the layout stack
 riverctl map normal Super M zoom
@@ -119,6 +135,7 @@ riverctl map normal Super F toggle-fullscreen
 riverctl background-color 0x1e1e2e
 riverctl border-color-focused 0xb4befe
 riverctl border-color-unfocused 0x1e1e2e
+riverctl rule-add -app-id '*' ssd # server side decoration for every app
 
 
 # INPUTS
@@ -130,11 +147,12 @@ riverctl set-repeat 50 300
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
 
-exec_always rivertile -view-padding 0 -outer-padding 0 &
-exec_always waybar &
+exec_always rivertile -view-padding 2 -outer-padding 0 &
+spawn_yambar &
 exec_once keepassxc &
 exec_once nextcloud --background &
 exec_once gammastep -l 54.3:13.1 -t 5700:4000 &
+exec_once dbus-update-activation-environment --all &
 
 # needs to be handled differently
 if ! pgrep wireplumber
