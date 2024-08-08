@@ -134,14 +134,17 @@ riverctl map normal Super F toggle-fullscreen
 # Set background and border color
 riverctl background-color 0x1e1e2e
 riverctl border-color-focused 0xb4befe
-riverctl border-color-unfocused 0x1e1e2e
+riverctl border-color-unfocused 0x1e1e2eda
 riverctl rule-add -app-id '*' ssd # server side decoration for every app
 
+# cursor theme
+riverctl xcursor-theme catppuccin-mocha-lavender-cursors
 
 # INPUTS
 riverctl input 'pointer-*' accel-profile flat
 riverctl keyboard-layout eu
 riverctl set-repeat 50 300
+riverctl set-cursor-warp on-output-change
 
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
@@ -153,6 +156,10 @@ exec_once keepassxc &
 exec_once nextcloud --background &
 exec_once gammastep -l 54.3:13.1 -t 5700:4000 &
 exec_once dbus-update-activation-environment --all &
+
+#exec_once gsettings set org.gnome.desktop.interface cursor-theme catppuccin-mocha-lavender-cursors &
+
+exec_always "$HOME/code/catbg/catbg.sh" &
 
 # needs to be handled differently
 if ! pgrep wireplumber

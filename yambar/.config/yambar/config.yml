@@ -10,16 +10,23 @@ bar:
     top-margin: 2
     left-margin: 2
     right-margin: 2
-  background: 1e1e2ef0
+  background: 1e1e2eda
   foreground: b4befeff
+
+
+  center:
+    - river:
+        title: {string: { text: "{title}" }}
+        content:
+          map:
+            conditions: {}
 
   left:
     - river:
-        title: {string: { text: "{title}" }}
         anchors:
           - base: &river_base
-              left-margin: 10
-              right-margin: 10 
+              left-margin: 6
+              right-margin: 6
               default: {string: {text: , }}
               conditions:
                 id == 1: {string: {text: 1, }}  
@@ -41,7 +48,7 @@ bar:
               state == urgent:
                 map:
                   <<: *river_base
-                  deco: {background: {color: D08770ff}}
+                  deco: {background: {color: f9e2afff }}
               state == focused:
                 map:
                   <<: *river_base
@@ -62,10 +69,21 @@ bar:
                   <<: *river_base
                   deco: {underline: {size: 3, color: 00000000}}
 
-
   right:
-
-
+    - pulse:
+        content:
+          map:
+            conditions:
+              source_muted && sink_muted:
+                string: {text: "vol muted mic muted"}
+              source_muted:
+                string: {text: "vol {sink_percent}% mic muted"}
+              sink_muted:
+                string: {text: "vol muted mic {source_percent}%"}
+              online:
+                string: {text: "vol {sink_percent}% mic {source_percent}%"}
+            on-click:
+              left: sh -c "pavucontrol"
 
     - cpu:
         poll-interval: 2500
@@ -81,8 +99,6 @@ bar:
 
     - clock:
         time-format: "%H:%M"
-        date-format: "%y-%m-%d"
+        date-format: "%Y-%m-%d"
         content:
           string: {text: "{date} {time}", foreground: f38ba8ff}
-
-
