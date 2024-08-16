@@ -16,7 +16,10 @@ bar:
 
   center:
     - river:
-        title: {string: { text: "{title}" }}
+        title:
+          string:
+            text: "{title}"
+            max: 100
         content:
           map:
             conditions: {}
