@@ -40,6 +40,7 @@ riverctl map normal Super P spawn "tofi-drun --drun-launch=true"
 # TODO: move these scripts into dotfiles
 riverctl map normal Super W spawn $HOME/code/scripts/tofi-powermenu.sh
 riverctl map normal Super+Shift S spawn $HOME/code/scripts/grimscreen.sh
+riverctl map normal Super Z spawn 'sh -c "grim - | feh - --fullscreen --auto-zoom"'
 
 riverctl map normal Super+Shift C close
 
@@ -134,7 +135,7 @@ riverctl map normal Super F toggle-fullscreen
 # Set background and border color
 riverctl background-color 0x1e1e2e
 riverctl border-color-focused 0xb4befe
-riverctl border-color-unfocused 0x1e1e2eda
+riverctl border-color-unfocused 0x1e1e2ee6
 riverctl rule-add -app-id '*' ssd # server side decoration for every app
 
 # cursor theme
