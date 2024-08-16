@@ -59,7 +59,7 @@ beautiful.notification_icon_size = 50
 
 -- This is used later as the default terminal and editor to run.
 terminal                         = os.getenv("TERMCMD") or "wezterm"
-browser                          = os.getenv("BROWSER") or "firefox-bin"
+browser                          = os.getenv("BROWSER") or "librewolf-bin"
 editor                           = os.getenv("EDITOR") or "nvim"
 mail                             = "thunderbird"
 emacsclient                      = "emacsclient -c -a 'emacs --daemon'"
@@ -112,12 +112,12 @@ local powermenu                  = {
 }
 
 local programs                   = {
-    { "terminal", terminal },
-    { "discord",  "discord" },
-    { "spotify",  "spotify" },
-    { "chromium", "chromium" },
-    { "firefox",  browser },
-    { "files",    file_manager },
+    { "terminal",  terminal },
+    { "discord",   "discord" },
+    { "spotify",   "spotify" },
+    { "chromium",  "chromium" },
+    { "librewolf", browser },
+    { "files",     file_manager },
 }
 
 local menu_awesome               = { "awesome", myawesomemenu }
@@ -321,6 +321,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift" }, "j", function() awful.client.swap.byidx(1) end,
         { description = "swap with next client by index", group = "client" }),
     awful.key({ modkey, "Shift" }, "k", function() awful.client.swap.byidx(-1) end,
+        { description = "swap with previous client by index", group = "client" }),
+    awful.key({ modkey, "Shift" }, "Down", function() awful.client.swap.byidx(1) end,
+        { description = "swap with next client by index", group = "client" }),
+    awful.key({ modkey, "Shift" }, "Up", function() awful.client.swap.byidx(-1) end,
         { description = "swap with previous client by index", group = "client" }),
     awful.key({ modkey, }, ".", function() awful.screen.focus_relative(1) end,
         { description = "focus the next screen", group = "screen" }),
