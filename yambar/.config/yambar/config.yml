@@ -73,18 +73,25 @@ bar:
                   deco: {underline: {size: 3, color: 00000000}}
 
   right:
+    - river:
+        title:
+          string: {text: "{layout}"}
+        content:
+          map:
+            conditions: {}
+
     - pulse:
         content:
           map:
             conditions:
               source_muted && sink_muted:
-                string: {text: "vol muted mic muted"}
+                string: {text: "vol muted mic muted", foreground: "f9e2afff"}
               source_muted:
-                string: {text: "vol {sink_percent}% mic muted"}
+                string: {text: "vol {sink_percent}% mic muted", foreground: "f9e2afff"}
               sink_muted:
-                string: {text: "vol muted mic {source_percent}%"}
+                string: {text: "vol muted mic {source_percent}%", foreground: "f9e2afff"}
               online:
-                string: {text: "vol {sink_percent}% mic {source_percent}%"}
+                string: {text: "vol {sink_percent}% mic {source_percent}%", foreground: "f9e2afff"}
             on-click:
               left: sh -c "pavucontrol"
 
