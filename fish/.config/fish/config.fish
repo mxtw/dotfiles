@@ -13,3 +13,4 @@ fish_add_path $HOME/.krew/bin
 
 # set theme with choose to avoid having to deal with fish_variables file
 fish_config theme choose "Catppuccin Mocha"
+set fish_greeting
