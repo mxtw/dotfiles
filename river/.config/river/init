@@ -36,7 +36,7 @@ wlr-randr --output DP-1     --mode 1920x1080@144.001007Hz --pos 0,1200    # bott
 
 
 riverctl map normal Super+Shift Return spawn librewolf-bin
-riverctl map normal Super Return spawn wezterm
+riverctl map normal Super Return spawn foot
 riverctl map normal Super E spawn thunar
 riverctl map normal Super P spawn "tofi-drun --drun-launch=true"
 
