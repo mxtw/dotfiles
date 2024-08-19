@@ -156,7 +156,7 @@ riverctl set-cursor-warp on-output-change
 riverctl default-layout $RIVERTILE
 
 #exec_always $RIVERTILE -view-padding 2 -outer-padding 0 &
-exec_always $RIVERTILE -inner-gaps 2 -outer-gaps 2 -no-smart-gaps &
+exec_always $RIVERTILE -inner-gaps 2 -outer-gaps 2 -no-smart-gaps -per-tag &
 spawn_yambar &
 exec_once keepassxc &
 exec_once nextcloud --background &
