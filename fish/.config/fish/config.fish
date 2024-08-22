@@ -11,7 +11,7 @@ set -gx FZF_DEFAULT_OPTS "\
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.krew/bin
 fish_add_path $HOME/go/bin
-fish_add_path $HOME/cargo/bin
+fish_add_path $HOME/.cargo/bin
 
 # set theme with choose to avoid having to deal with fish_variables file
 fish_config theme choose "Catppuccin Mocha"
