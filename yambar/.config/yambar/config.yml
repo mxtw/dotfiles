@@ -4,8 +4,8 @@ bar:
   location: top
   font: hack nerd font
   height: 20
-  right-spacing: 8
-  right-margin: 10
+  right-spacing: 6
+  right-margin: 6
   border:
     top-margin: 2
     left-margin: 2

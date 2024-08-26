@@ -22,7 +22,7 @@ spawn_yambar() {
         sleep 0.2
     done
     if [ "$total" -gt "1" ]; then
-        riverctl focus-output HDMI-A-1
+        riverctl focus-output DP-2
     fi
 }
 
@@ -30,16 +30,16 @@ exec_always() {
     killall $1; $@
 }
 
-wlr-randr --output DP-2     --mode 1920x1200              --pos 0,0       # top left
-wlr-randr --output HDMI-A-1 --mode 1920x1080              --pos 1920,1200 # bottom left
-wlr-randr --output DP-1     --mode 1920x1080@144.001007Hz --pos 0,1200    # bottom right
+# wlr-randr --output DP-2     --mode 1920x1200              --pos 0,0       # top left
+# wlr-randr --output HDMI-A-1 --mode 1920x1080              --pos 1920,1200 # bottom left
+# wlr-randr --output DP-1     --mode 1920x1080@144.001007Hz --pos 0,1200    # bottom right
 
 
 riverctl map normal Super+Shift Return spawn librewolf-bin
 riverctl map normal Super Return spawn foot
 riverctl map normal Super E spawn thunar
 #riverctl map normal Super P spawn "tofi-drun --drun-launch=true"
-riverctl map normal Super P spawn fuzzel
+riverctl map normal Super P spawn "fuzzel -I"
 
 # TODO: move these scripts into dotfiles
 riverctl map normal Super W spawn $HOME/code/scripts/powermenu.sh
@@ -158,6 +158,7 @@ riverctl default-layout $RIVERTILE
 
 #exec_always $RIVERTILE -view-padding 2 -outer-padding 0 &
 exec_always $RIVERTILE -inner-gaps 2 -outer-gaps 2 -no-smart-gaps -per-tag &
+exec_once kanshi &
 spawn_yambar &
 exec_once keepassxc &
 exec_once nextcloud --background &
