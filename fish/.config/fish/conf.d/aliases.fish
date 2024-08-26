@@ -5,6 +5,9 @@ alias ls "eza -lh --git --sort modified"
 alias vim "nvim"
 abbr --add v "vim"
 
+# tmux
+alias t "sesh connect (sesh list -tz | fzf)" # quickly start tmux session
+
 # kubernetes
 abbr --add k   "kubectl"
 abbr --add kg  "kubectl get"
