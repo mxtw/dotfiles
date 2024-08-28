@@ -41,9 +41,8 @@ riverctl map normal Super E spawn thunar
 #riverctl map normal Super P spawn "tofi-drun --drun-launch=true"
 riverctl map normal Super P spawn "fuzzel -I"
 
-# TODO: move these scripts into dotfiles
-riverctl map normal Super W spawn $HOME/code/scripts/powermenu.sh
-riverctl map normal Super+Shift S spawn $HOME/code/scripts/grimscreen.sh
+riverctl map normal Super W spawn $HOME/.local/scripts/powermenu.sh
+riverctl map normal Super+Shift S spawn $HOME/.local/scripts/grimscreen.sh
 riverctl map normal Super Z spawn 'sh -c "grim - | feh - --fullscreen --auto-zoom"'
 
 riverctl map normal Super+Shift C close
@@ -167,7 +166,7 @@ exec_once dbus-update-activation-environment --all &
 
 #exec_once gsettings set org.gnome.desktop.interface cursor-theme catppuccin-mocha-lavender-cursors &
 
-exec_always "$HOME/code/catbg/catbg.sh" &
+exec_always "$HOME/.local/scripts/catbg.sh" &
 
 # needs to be handled differently
 if ! pgrep wireplumber

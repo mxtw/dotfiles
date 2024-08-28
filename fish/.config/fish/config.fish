@@ -9,6 +9,7 @@ set -gx FZF_DEFAULT_OPTS "\
 
 # path
 fish_add_path $HOME/.local/bin
+fish_add_path $HOME/.local/scripts
 fish_add_path $HOME/.krew/bin
 fish_add_path $HOME/go/bin
 fish_add_path $HOME/.cargo/bin
