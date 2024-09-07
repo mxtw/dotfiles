@@ -163,6 +163,7 @@ exec_once keepassxc &
 exec_once nextcloud --background &
 exec_once gammastep -l 54.3:13.1 -t 5700:4000 &
 exec_once dbus-update-activation-environment --all &
+exec_once mako &
 
 #exec_once gsettings set org.gnome.desktop.interface cursor-theme catppuccin-mocha-lavender-cursors &
 
