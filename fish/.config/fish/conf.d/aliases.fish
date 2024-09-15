@@ -13,8 +13,8 @@ abbr --add k   "kubectl"
 abbr --add kg  "kubectl get"
 abbr --add kgp "kubectl get pods"
 abbr --add ke  "kubectl exec -it"
-abbr --add ka  "kubectl apply -f"
-abbr --add kd  "kubectl delete -f"
+abbr --add ka  "kubectl apply"
+abbr --add kd  "kubectl delete"
 abbr --add kl  "kubectl logs"
 
 # docker
